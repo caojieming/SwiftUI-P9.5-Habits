@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// used for ForEach list looping
+// assigns indexes to habits, used for ForEach list looping
 extension Sequence {
     func indexed() -> Array<(offset: Int, element: Element)> {
         return Array(enumerated())
@@ -32,6 +32,13 @@ struct ContentView: View {
                 .onDelete(perform: removeHabit)
                 
             }
+            .navigationTitle("Habit List")
+            .overlay(Group {
+                if habitList.habits.isEmpty {
+                    Text("Press the plus button to add a new Habit.")
+                        .foregroundStyle(.gray)
+                }
+            })
             .sheet(isPresented: $showAddHabit) {
                 AddHabit(habits: self.habitList)
             }
@@ -45,7 +52,7 @@ struct ContentView: View {
         
     }
     
-    
+    // remove by removing from stored list
     func removeHabit(at offsets: IndexSet) {
         habitList.habits.remove(atOffsets: offsets)
     }

@@ -13,16 +13,24 @@ struct HabitView: View {
     
     var body: some View {
         HStack {
+            
             VStack(alignment: .leading) {
                 
                 Text(activity.name)
+                    .font(.headline)
+                    .frame(maxHeight: 20)
+                    
+                
                 Text(activity.description)
+                    .font(.caption)
+                    .frame(maxHeight: 20)
                 
             }
             
             Spacer()
             
             Text("Completions: \(activity.completions)")
+                .font(.title3)
                 
         }
     }

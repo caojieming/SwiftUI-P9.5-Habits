@@ -16,17 +16,40 @@ struct HabitDetail: View {
         VStack(alignment: .center) {
              
             Text(habit.name)
-            Text(habit.description)
+                .font(.title)
+                .padding()
             
-            Text("Completions: \(habit.completions)")
-            
-            Button(action: { self.habit.addCompletion() }) {
-                Text("Add to completions")
-                    .font(.title)
+            ScrollView {
+                Text(habit.description)
+                    .font(.body)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                    .foregroundColor(.white)
-                    .background(.blue)
-                    .cornerRadius(15)
+            }
+            
+            Spacer()
+            
+            Divider()
+                .padding(.vertical)
+            
+            Text("Current Completions: \(habit.completions)")
+            
+            HStack {
+                Button(action: { self.habit.subtractCompletion() }) {
+                    Text("-1 Completion")
+                        .font(.title3)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.red)
+                        .cornerRadius(15)
+                }
+                Button(action: { self.habit.addCompletion() }) {
+                    Text("+1 Completion")
+                        .font(.title3)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .cornerRadius(15)
+                }
             }
             
             

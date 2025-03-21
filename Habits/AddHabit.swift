@@ -19,7 +19,8 @@ struct AddHabit: View {
         NavigationView {
             Form {
                 TextField("Name", text: $name)
-                TextField("Description", text: $description)
+//                TextField("Description", text: $description, axis: .vertical)
+                TextEditor(text: $description)
             }
             .navigationBarTitle("Add new habit")
             .navigationBarItems(trailing:
